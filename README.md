@@ -12,19 +12,54 @@ A study notes book for the common knoweldge and tasks of a Linux system admin.
 
 The users and groups are managed in `/etc/passwd` and `/etc/group` files.
 
+```shell
+$ tail /etc/passwd
+$ tail /etc/group
+$ tail /etc/shadow
+```
+
 The commands to manage a user are as follows:
 - `useradd`
 - `usermod`
 - `userdel`
 
-And for groups are 
+And for groups:
+- `groupadd`
+- `groupmod`
+- `groupdel`
+
+Each user in the system is associated with unique user id `uid`, and each group is associated with `gid`.
+
+```shell
+$ id abdullah
+```
+
+Use flags `-g` and `-aG` for users to replace group or append group, respectively:
+
+```shell
+$ sudo usermod -G admins abdullah
+$ sudo usermod -aG staff abdullah
+```
 
 To lock or unlock a user account, us the `-L`, `-U` options respectively.
 
 ```shell
 $ usermod -L <username>
 $ usermod -U <username>
-````
+```
+
+To restrict service user accounts (e.g. accounts for web servers), the shell can be set to `nologin`:
+
+```shell
+$ usermod -s /sbin/nologin nginx_usr1
+```
+
+To change a user passowrd, use the command `passwd` interactively. Additionally `change` command sets the password policy in the system.
+
+
+Use the command `su - <username>` to switch to the specified user. which will promote for her password. Running the command without username will switch to
+the root user. To avoid cases where password is not availabale, use `sudo` to switch accounts using current user password only and according to rules in `/etc/sudoers` directory. Use `sudo -i` to gain an interactive root shell.
+
 
 ## 3. Shell Tips and Tricks 
 
