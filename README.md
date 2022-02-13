@@ -4,6 +4,16 @@ A study notes book for the common knoweldge and tasks of a Linux system admin.
 
 ## Table of Content
 
+1. [Processes](#1-processes)
+2. [User Management](#2-user-management)
+3. [Shell Tips and Tricks](#3-shell-tips-and-tricks)
+4. [File Permissions](#4-file-permissions)
+5. [Crons and Background Services](#5-crons-and-background-services)
+6. [Linxu Distros](#6-linxu-distros)
+7. [Logs, Monitroing, and Troubleshooting](#7-logs-monitroing-and-troubleshooting)
+8. [Network Essentials](#8-network-essentials)
+9. [System Updates and Patching](#9-system-updates-and-patching)
+10. [Additional Resources & Final Notes](#10-additional-resources--final-notes)
 
 ## 1. Processes
 
@@ -66,7 +76,9 @@ the root user. To avoid cases where password is not availabale, use `sudo` to sw
 
 ## 4. File Permissions
 
-A file permissions are considered in three dimensions: the owner user, the owner's group, and rest of other users. Showing the permisison of files and directories can be using `ls -l`, `ls -ld` respectively.
+A file permissions are considered in three dimensions: the owner user, the owner's group, and rest of other users. 
+
+Showing the permisison of files and directories can be using `ls -l`, `ls -ld` respectively.
 
 The basic permission types are: read (r), write (w), and execute (x) on both folders and files:
 
@@ -81,6 +93,7 @@ The symbols/letter way is made for `u`, `g`, `o`, or `a` basis for the user, gro
 
 ```shell
 # Use + to add, - to remove, and = to reset.
+
 # adding execute permission to user
 $ chmod u+x my-file.txt
 # setting read, execute to all on a folder and its content
@@ -97,7 +110,6 @@ $ chown sarah file-10.txt
 $ chown sarah:staff file-12.txt
 
 $ chown :admins server_log.txt
-
 $ chgrp operators server_log.txt
 ```
 
@@ -130,7 +142,7 @@ Use the `man` command to lookup the manual information on commands or topics in 
 
 Additionally, the `info` command is the GNU documentation tool and provide more detailed materials.
 
-Both provide several shortcuts, navigation, and searching capablities (e.g. `man -K <keyword` to search across the manual).
+Both provide shortcuts, navigation, and searching capablities (e.g. `man -K <keyword` to search across manual).
 
 **Recommened Reading list:**
 1.
