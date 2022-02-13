@@ -20,11 +20,18 @@ A study notes book for the common knoweldge and tasks of a Linux system admin.
 List the current active process with their statuses, numbers, resource usage, etc. using the command `ps`.
 
 ```shell
-$ ps -axfcm
+$ ps -auxc
 ```
 
 Quoting man's page documentaiton on `ps`: "A different set of processes can be selected for display by using any combination of the -a, -G, -g, -p, -T, -t, -U, and -u options.  If more than one of these options are given, then ps will select all processes which are matched by at least one of the given options".
 
+The daemon `systemd` process starts during boot time, and remains active until the shutdown. It's the parent process for all other process in the system.
+
+Each process contains several main parts, such as: PID, state, virtual space address (memory), threads, network and file descriptors, scheduler information, and links. Processes are controlled and respond to signals. The states that a process can transistion among are depicted below:
+
+![images/process-states](images/process-states)
+
+To observe the states and other information of the processes interatively, use the `top` command.
 
 
 ## 2. User Management
@@ -80,6 +87,38 @@ Use the command `su - <username>` to switch to the specified user. which will pr
 the root user. To avoid cases where password is not availabale, use `sudo` to switch accounts using current user password only and according to rules in `/etc/sudoers` directory. Use `sudo -i` to gain an interactive root shell.
 
 
+To run executables as background process (job), append an ampersand to it:
+
+```shell
+$ echo "Hi .. looping:" | sleep 10000 | echo "done." &
+````
+
+To view the current jobs, and their details run `job`, `ps j` commands respectively.
+
+To bring back a job in the foreground in the current session, and send it back use the followin:
+
+```shell
+$ fg %<job-no>
+$ ctrl+z
+$ bg %<job-no>
+```
+
+Use the command `kill -l` to see the available signals to send to processes, like interrupt, terminate, resume, etc.
+
+```shell
+$ kill -l
+$ kil -9 5921
+$ kill -SIGTERM 6152
+```
+
+Use `killall` to operate on multiple processes using their executable name. Use `pkill` for filering with more options.
+
+```shell
+$ killall -15 nginx
+$ pkill -U tester
+```
+
+
 ## 3. Shell Tips and Tricks 
 
 
@@ -129,6 +168,11 @@ $ chmod a+t protected-folder/
 $ chmod -R 1444 read-only-protected/
 ```
 
+Finally, use `pstree` and `pgrep` to view process parent/child tree and search for processes by pattern.
+
+```shell
+$ psgrep -u abdullah -l
+```
 
 ## 5. Crons and Background Services
 
@@ -137,6 +181,16 @@ $ chmod -R 1444 read-only-protected/
 
 
 ## 7. Logs, Monitroing, and Troubleshooting
+
+You can moitor the system's resources usage, uptime, and sessions' load leverages over time as follows:
+
+```shell
+$ top
+$ uptime
+$ w
+```
+
+Use `lscpu` to see the system's CPU in use and other details.
 
 
 ## 8. Network Essentials
