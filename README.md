@@ -17,6 +17,15 @@ A study notes book for the common knoweldge and tasks of a Linux system admin.
 
 ## 1. Processes
 
+List the current active process with their statuses, numbers, resource usage, etc. using the command `ps`.
+
+```shell
+$ ps -axfcm
+```
+
+Quoting man's page documentaiton on `ps`: "A different set of processes can be selected for display by using any combination of the -a, -G, -g, -p, -T, -t, -U, and -u options.  If more than one of these options are given, then ps will select all processes which are matched by at least one of the given options".
+
+
 
 ## 2. User Management
 
@@ -145,11 +154,12 @@ Additionally, the `info` command is the GNU documentation tool and provide more 
 Both provide shortcuts, navigation, and searching capablities (e.g. `man -K <keyword` to search across manual).
 
 **Recommened Reading list:**
-1.
-2.
-3. 
-4. 
-5.
+
+1. [How Linux Worksm What Every Superuser Should Know, Brian Ward, _2nd Edition, No Starch Press_.](https://www.amazon.com/How-Linux-Works-2nd-Superuser/dp/1593275676).
+2. [Linux Command Line and Shell Scripting Bible, R. Blum and C. Bresnahan, _3rd Edition, Wiley_.](https://www.amazon.com/Command-Scripting-Christine-Bresnahan-2015-01-20/dp/B01JNWWSZA)
+3. [Linux Bible, Christopher Negus, _9th Edition, Wiley_.](https://www.amazon.com/Linux-Bible-Christopher-Negus/dp/1119578884/)
+4. [9 to 5 Linux Blog.](https://9to5linux.com/)
+5. [nixCraft.](https://www.cyberciti.biz/)
 
 ## License
 
