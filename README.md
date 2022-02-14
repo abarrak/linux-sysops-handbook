@@ -174,7 +174,45 @@ Finally, use `pstree` and `pgrep` to view process parent/child tree and search f
 $ psgrep -u abdullah -l
 ```
 
-## 5. Crons and Background Services
+## 5. Background Services and Crons
+
+`systemctl` is the command used to list, manage, and check background processes or so called `daemons`.
+
+To list the available categories of daemons, run:
+
+```shell
+$ systemctl -t help
+```
+
+There are 3 types of daemons: 1. services, 2. sockets, 3. paths. Use the following to see the system's processes in each:
+
+```shell
+$ systemctl
+$ systemctl list-units --type=service
+$ systemctl list-units --type=socket --state=LOAD
+$ systemctl list-units --type=path --all
+$ systemctl list-unit-files
+```
+
+The states `enabled` and `disabled` indicate wether a service is lanuched on startup or not. The subcommands `enable` and `disable` can be used to control this aspect.
+
+To view the status of a daemon use the `status` command or its state shortcuts:
+
+```shell
+$ systemctl status kubelet
+$ systemctl is-active dockerd
+$ systemctl is-enabled sshd.service
+```
+
+Use the subcommands `start`, `stop`, `restart`, and `reload`, `reload-or-restart` to control daemons.
+
+Additionally, use the following to list a daemon dependencies:
+
+```shell
+$ systemctl list-dependencies nginx.service
+```
+
+Finally, to resolve conflicting services making them unavailable, the `mask` and `unmask` commands can be used to point a deamons config to `dev/null` then back to normal respectively.
 
 
 ## 6. Linxu Distros
