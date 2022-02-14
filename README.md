@@ -91,7 +91,7 @@ To run executables as background process (job), append an ampersand to it:
 
 ```shell
 $ echo "Hi .. looping:" | sleep 10000 | echo "done." &
-````
+```
 
 To view the current jobs, and their details run `job`, `ps j` commands respectively.
 
@@ -121,6 +121,14 @@ $ pkill -U tester
 
 ## 3. Shell Tips and Tricks 
 
+
+The `ssh` command used to connect to servers in secure manner using OpenSSH library using public key cryptography. The configuration and known hosts are kept under `/etc/ssh` system-wide or in `~/.ssh/` in current user's home directory. On the other hand `scp` is used for secure copy on secure shell fashion.
+
+The following list of commands are used to generate and manage ssh keys between client and server:
+1. `ssh-keygen`.
+2  `ssh-agent`.
+3. `ssh-copy-id`.
+4. `ssh-add`.
 
 ## 4. File Permissions
 
