@@ -23,13 +23,13 @@ List the current active process with their statuses, numbers, resource usage, et
 $ ps -auxc
 ```
 
-Quoting man's page documentaiton on `ps`: "A different set of processes can be selected for display by using any combination of the -a, -G, -g, -p, -T, -t, -U, and -u options.  If more than one of these options are given, then ps will select all processes which are matched by at least one of the given options".
+Quoting man's page documentaiton on `ps`: "A different set of processes can be selected for display by using any combination of the `-a, -G, -g, -p, -T, -t, -U, and -u` options.  If more than one of these options are given, then ps will select all processes which are matched by at least one of the given options".
 
 The daemon `systemd` process starts during boot time, and remains active until the shutdown. It's the parent process for all other process in the system.
 
 Each process contains several main parts, such as: PID, state, virtual space address (memory), threads, network and file descriptors, scheduler information, and links. Processes are controlled and respond to signals. The states that a process can transistion among are depicted below:
 
-![images/process-states](images/process-states)
+<img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/process-states.png?raw=true" width="700px" height="450px" />
 
 To observe the states and other information of the processes interatively, use the `top` command.
 
