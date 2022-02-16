@@ -122,6 +122,24 @@ $ pkill -U tester
 ## 3. Shell Tips and Tricks 
 
 
+Getting used to [bash language and its fundamentals](https://learnxinyminutes.com/docs/bash/) like conditions, looping, functions, etc. is recommened.
+
+The popular files and text processing and mainpulation utilites are important to master, such as:
+- `cat`.
+- `cp`.
+- `rm`.
+- `mkdir`.
+- `rmdir`.
+- `touch`.
+- `less`.
+- `more`.
+- `head`.
+- `tail`.
+- `grep`.
+- `find`.
+- `wc`.
+- `sed`.
+
 The `ssh` command used to connect to servers in secure manner using OpenSSH library using public key cryptography. The configuration and known hosts are kept under `/etc/ssh` system-wide or in `~/.ssh/` in current user's home directory. On the other hand `scp` is used for secure copy on secure shell fashion.
 
 The following list of commands are used to generate and manage ssh keys between client and server:
@@ -238,6 +256,31 @@ $ w
 
 Use `lscpu` to see the system's CPU in use and other details.
 
+The logs of the system events and processes traces are usually kept in `/var/log` directory. There are two categories of persistent logs (`rsyslogs`) and temporary logs (`journald`) that are wiped across boots. Logs include syslog protocol messages, events, security incidents, mailing logs, jobs logs, and other program logs.
+
+
+As explored in section (3), use `cat`, `head`, `tail` commands to interactively see or follow the logs.
+
+```shell
+$ head -n 50 /var/logs/mail.log
+$ tail -f /var/logs/mysql.log
+```
+
+You can configure the syslog service and manage it as any daemon:
+
+```shell
+$ vim /etc/rsyslog.conf
+$ systemctl reload rsyslog
+```
+
+On the other hand, use `journalctl` to view and follow the system's `journald` log entries, which resides in `run/log/journal`.
+
+```shell
+$ journalctl -n 50 -p err 
+$ journalctl -f
+$ journalctl _PID=6610
+```
+
 
 ## 8. Network Essentials
 
@@ -260,6 +303,7 @@ Both provide shortcuts, navigation, and searching capablities (e.g. `man -K <key
 3. [Linux Bible, Christopher Negus, _9th Edition, Wiley_.](https://www.amazon.com/Linux-Bible-Christopher-Negus/dp/1119578884/)
 4. [9 to 5 Linux Blog.](https://9to5linux.com/)
 5. [nixCraft.](https://www.cyberciti.biz/)
+
 
 ## License
 
