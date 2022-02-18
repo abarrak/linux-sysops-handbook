@@ -125,28 +125,38 @@ $ pkill -U tester
 Getting used to [bash language and its fundamentals](https://learnxinyminutes.com/docs/bash/) like conditions, looping, functions, etc. is recommened.
 
 The popular files and text processing and mainpulation utilites are important to master, such as:
-- `cat`.
-- `cp`.
-- `rm`.
-- `mkdir`.
-- `rmdir`.
-- `touch`.
-- `less`.
-- `more`.
-- `head`.
-- `tail`.
-- `grep`.
-- `find`.
-- `wc`.
-- `sed`.
+
+- `cat`
+- `cp`
+- `rm`
+- `mkdir`
+- `rmdir`
+- `touch`
+- `less`
+- `more`
+- `head`
+- `tail`
+- `grep`
+- `find`
+- `wc`
+- `sed`
+
+Use the command `date` to print the current date and time or others in the past and future:
+
+```shell
+$ date +%x
+```
 
 The `ssh` command used to connect to servers in secure manner using OpenSSH library using public key cryptography. The configuration and known hosts are kept under `/etc/ssh` system-wide or in `~/.ssh/` in current user's home directory. On the other hand `scp` is used for secure copy on secure shell fashion.
 
 The following list of commands are used to generate and manage ssh keys between client and server:
+
 1. `ssh-keygen`.
-2  `ssh-agent`.
+2. `ssh-agent`.
 3. `ssh-copy-id`.
 4. `ssh-add`.
+
+
 
 ## 4. File Permissions
 
@@ -287,6 +297,68 @@ $ journalctl _PID=6610
 
 ## 9. System Updates and Patching
 
+Managing the system packages varies depending on linux distributions, but the essential parts are the same (installation, repositories, package managers, etc.). For Debian based distribtuions, `apt` is the package manager, whereas for Fedora / RHEL, `yum` is used.
+
+Search for some package:
+
+```shell
+$ apt search <KEYWORD>
+$ yum search <KEYWORD>
+```
+
+Install a package:
+
+```shell
+$ apt install <NAME>
+$ yum install <NAME>
+```
+
+Update a package or all packages:
+
+```shell
+$ apt update <NAME>
+$ yum update <NAME>
+```
+
+Remove a package:
+
+```shell
+$ apt remove <NAME>
+$ yum remove <NAME>
+```
+
+Show details on a package:
+
+```shell
+$ apt show <NAME>
+$ yum info <NAME>
+```
+
+List all current packages on the system:
+
+```shell
+$ apt list
+$ yum list
+```
+
+Audit the history of pacakge management actions:
+
+```shell
+$ cat less /var/log/apt/history.log | less
+$ cat less /var/log/dnf.rpm.log | less
+```
+
+And finally, the package source repos can be set up and updated through the following:
+
+```shell
+# list current enabled repos
+$ yum repolist all
+$ apt-cache policy
+
+# manage and add repos in these directories:
+$ cat /etc/apt/sources.list /etc/apt/sources.list.d/*
+$ cat /etc/yum.repos.d/*
+```
 
 ## 10. Additional Resources & Final Notes
 
