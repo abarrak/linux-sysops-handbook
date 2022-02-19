@@ -139,6 +139,7 @@ The popular files and text processing and mainpulation utilites are important to
 - `tail`
 - `grep`
 - `find`
+- `locate`
 - `wc`
 - `sed`
 
@@ -295,6 +296,8 @@ $ journalctl _PID=6610
 
 ## 8. Network Essentials
 
+For effective work on the system network configurations and troubleshooting, it is essential to review network/internet protocols (TCP/UDP) and IPv4/IPv6 concepts [1](https://www.ibm.com/cloud/learn/networking-a-complete-guide), [2](https://www.cloudflare.com/learning/network-layer/what-is-a-protocol/).
+
 
 ## 9. System Updates and Patching
 
@@ -394,6 +397,8 @@ To see the currently attached file system with mounts and a directory space usag
 $ df -H
 $ du -H /home/abdullah
 ```
+
+The `lsof` command lists all active proccess using the block device.
 
 The permenant mounting process rely on `/etc/fstab` file to determine devices to mount on the boot time.
 
