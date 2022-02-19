@@ -13,7 +13,8 @@ A study notes book for the common knoweldge and tasks of a Linux system admin.
 7. [Logs, Monitroing, and Troubleshooting](#7-logs-monitroing-and-troubleshooting)
 8. [Network Essentials](#8-network-essentials)
 9. [System Updates and Patching](#9-system-updates-and-patching)
-10. [Additional Resources & Final Notes](#10-additional-resources--final-notes)
+11. [Storage.](#10-storage)
+12. [Notes & Additional Resources](#10-additional-resources--final-notes)
 
 ## 1. Processes
 
@@ -360,7 +361,46 @@ $ cat /etc/apt/sources.list /etc/apt/sources.list.d/*
 $ cat /etc/yum.repos.d/*
 ```
 
-## 10. Additional Resources & Final Notes
+## 10. Storage
+
+Linux is formed for a unified file-system consists of all file systems provided by the hardware or virtual storage devices attached to the system. Essentially, everything in linux is a file. It can be viewed as a reveresed tree of nested directories starting from the root directory `/`.
+
+<img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/linux-file-system?raw=true" width="700px" height="450px" />
+
+Block devices are the mechanism that the kernel detects and identify raw storage devices (HDD, SSD, USBs, ..). [As the name indicates, the kernel interfaces and references them by fixed-size blocks (chunks of spaces)](https://www.digitalocean.com/community/tutorials/an-introduction-to-storage-terminology-and-concepts-in-linux). The block devices are stored in `/dev` directory by the OS, and has letters naming convention such as `/dev/sda`, `/dev/sdb`, `/dev/vda`, and appeneded numbers in case of partitions `/dev/sda3`. The attachment of the block device into the system is done through mounting it to a directory in the system.
+
+Two operations are essential for using block storages:
+
+**1. Partiition:**
+
+  Breaking the disk into reusable smaller units, each treated as own disk. 
+  The main partitioning methods are MBR (Master Boot Record) and GPT (GUID Partition Table).
+
+**2. Formatting:**
+
+  Prepeating the device as a file-system to be read and write to. Many file-system formats exists like:
+
+  - `Ext4`.
+  - `XFS`.
+  - `Btrfs`.
+  - `ZFS`.
+
+
+Additionall, LVM and RAID are another two concepts where the first operate on the opposiste of partitioning and group multiple disks as one logical volume. The latter (Redundant Array of Independent Disks) is used to architect more advanced storage setup to ensure higher availablity, redundency, RD, etc.
+
+To see the currently attached file system with mounts and a directory space usage, run `df`/`du` commands:
+
+```shell
+$ df -H
+$ du -H /home/abdullah
+```
+
+The permenant mounting process rely on `/etc/fstab` file to determine devices to mount on the boot time.
+
+Use the commands `lsblk` and `monunt` to check and mount file-sytem devices, respectively.
+
+
+## 11. Notes & Additional Resources
 
 Use the `man` command to lookup the manual information on commands or topics in the system.
 
@@ -368,13 +408,19 @@ Additionally, the `info` command is the GNU documentation tool and provide more 
 
 Both provide shortcuts, navigation, and searching capablities (e.g. `man -K <keyword` to search across manual).
 
-**Recommened Reading list:**
+### Recommened Reading List
+
+**Books:**
 
 1. [How Linux Worksm What Every Superuser Should Know, Brian Ward, _2nd Edition, No Starch Press_.](https://www.amazon.com/How-Linux-Works-2nd-Superuser/dp/1593275676).
 2. [Linux Command Line and Shell Scripting Bible, R. Blum and C. Bresnahan, _3rd Edition, Wiley_.](https://www.amazon.com/Command-Scripting-Christine-Bresnahan-2015-01-20/dp/B01JNWWSZA)
 3. [Linux Bible, Christopher Negus, _9th Edition, Wiley_.](https://www.amazon.com/Linux-Bible-Christopher-Negus/dp/1119578884/)
-4. [9 to 5 Linux Blog.](https://9to5linux.com/)
-5. [nixCraft.](https://www.cyberciti.biz/)
+
+**Websites & Blogs:**
+
+1. [Digital Occean Knowledge Hub.](https://www.digitalocean.com/community/tags/linux-basics?language=en)
+2. [9 to 5 Linux Blog.](https://9to5linux.com/)
+3. [nixCraft.](https://www.cyberciti.biz/)
 
 
 ## License
