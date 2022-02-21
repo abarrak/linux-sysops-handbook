@@ -296,7 +296,60 @@ $ journalctl _PID=6610
 
 ## 8. Network Essentials
 
-For effective work on the system network configurations and troubleshooting, it is essential to review network/internet protocols (TCP/UDP) and IPv4/IPv6 concepts [1](https://www.ibm.com/cloud/learn/networking-a-complete-guide), [2](https://www.cloudflare.com/learning/network-layer/what-is-a-protocol/).
+For effective work on the system network configurations and troubleshooting, it is essential to review network/internet protocols (TCP/UDP) and IPv4/IPv6 concepts [(Ref.1)](https://www.ibm.com/cloud/learn/networking-a-complete-guide), [(Ref.2)](https://www.cloudflare.com/learning/network-layer/what-is-a-protocol/).
+
+
+See the hostname of current machine or set it as below:
+
+```shell
+$ hostname
+$ hostnamectl set-hostname rhel.n1.apps.com
+```
+
+The host name is managed under `/etc/hostname`. 
+
+The host connection is either managed dynamically (`DHCP`) configured in `/etc/resolv.conf` or manually in `/etc/hosts` file.
+
+The `ping` utiltiy helps for connectivity checking:
+
+```shell
+$ ping 172.168.9.13
+$ ping -c4 github.com
+$ ping6 2001:db8:3333:4444:5555:6666:7777:8888
+```
+
+To see the netowrk routing table and interfaces, use the following:
+
+```shell
+$ ip routes
+$ ip -6 route
+$ ip show link
+```
+
+Use the command `nmap` [for advanced network investigation and security monitor and scan.](https://www.cyberciti.biz/security/nmap-command-examples-tutorials/)
+
+```shell
+# Scan a single ip address
+$ nmap 192.168.1.1
+ 
+# Scan a host name 
+$ nmap -v server1.cyberciti.biz
+
+# View open ports:
+$ nmap --open 192.168.2.18
+
+# Trace all pakets:
+$ nmap --packet-trace 192.168.1.1
+```
+
+`NetworkManager` is the kernel feature [to manage netowrk configurations in Linux](https://en.wikipedia.org/wiki/NetworkManager). `nmcli` is the terminal utility.
+
+```shell
+$ nmcli device wifi list
+$ nmcli dev status
+$ nmcli general hostname centos-8.cluster.internal
+$ nmcli con show 
+```
 
 
 ## 9. System Updates and Patching
