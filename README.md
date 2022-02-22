@@ -257,11 +257,11 @@ Finally, to resolve conflicting services making them unavailable, the `mask` and
 
 In 1991, Linux kernal was introduced by Linus Torvalds, and combined with GNU project, which is previosuly created in 1990 as open source OS programs and components. This formed what we call today Linux distribution, a Unix-like operating system.
 
-[Today the Linux operating system is supported on most hardware platforms.  Linux works on almost every architecture from i386 to SPARC. Linux can be found on almost every type of device today, from watches, televisions, mobile phones, servers, desktops, and even vending machines.](https://www.linuxtrainingacademy.com/linux-distribution-intro/)
+Today the Linux operating system is supported on most hardware platforms.  [Linux works on almost every architecture from i386 to SPARC](https://www.linuxtrainingacademy.com/linux-distribution-intro/). Linux can be found on almost every type of device today, from watches, televisions, mobile phones, servers, desktops, and even vending machines.
 
 One of the major distinction between Linux distributions is the package management part and how software is installed and managed. There are multiple package formats, and the most common ones are Debian (deb), RedHat Package Manager (RPM).
 
-<img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/distros.png?raw=true" width="700px" height="450px" />
+<img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/distros.jpg?raw=true" width="700px" height="450px" />
 
 Here's a listing for the common Debian based distros:
 
@@ -444,7 +444,7 @@ $ cat /etc/yum.repos.d/*
 
 Linux is formed for a unified file-system consists of all file systems provided by the hardware or virtual storage devices attached to the system. Essentially, everything in linux is a file. It can be viewed as a reveresed tree of nested directories starting from the root directory `/`.
 
-<img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/linux-file-system?raw=true" width="700px" height="450px" />
+<img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/linux-file-system.png?raw=true" width="700px" height="450px" />
 
 Block devices are the mechanism that the kernel detects and identify raw storage devices (HDD, SSD, USBs, ..). [As the name indicates, the kernel interfaces and references them by fixed-size blocks (chunks of spaces)](https://www.digitalocean.com/community/tutorials/an-introduction-to-storage-terminology-and-concepts-in-linux). The block devices are stored in `/dev` directory by the OS, and has letters naming convention such as `/dev/sda`, `/dev/sdb`, `/dev/vda`, and appeneded numbers in case of partitions `/dev/sda3`. The attachment of the block device into the system is done through mounting it to a directory in the system.
 
