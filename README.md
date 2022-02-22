@@ -11,7 +11,7 @@ A study notes book for the common knoweldge and tasks of a Linux system admin.
 3. [Shell Tips and Tricks](#3-shell-tips-and-tricks)
 4. [File Permissions](#4-file-permissions)
 5. [Background Services and Crons](#5-crons-and-background-services)
-6. [Linxu Distros](#6-linxu-distros)
+6. [Linux Distros](#6-linux-distros)
 7. [Logs, Monitroing, and Troubleshooting](#7-logs-monitroing-and-troubleshooting)
 8. [Network Essentials](#8-network-essentials)
 9. [System Updates and Patching](#9-system-updates-and-patching)
@@ -255,7 +255,7 @@ $ systemctl list-dependencies nginx.service
 Finally, to resolve conflicting services making them unavailable, the `mask` and `unmask` commands can be used to point a deamons config to `dev/null` then back to normal respectively.
 
 
-## 6. Linxu Distros
+## 6. Linux Distros
 
 In 1991, Linux kernal was introduced by Linus Torvalds, and combined with GNU project, which is previosuly created in 1990 as open source OS programs and components. This formed what we call today Linux distribution, a Unix-like operating system.
 
