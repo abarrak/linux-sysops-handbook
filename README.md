@@ -1,6 +1,6 @@
 # Linux SysOps Handbook
 
-A study notes book for the common knoweldge and tasks of a Linux system admin.
+A study notes book for the common knowledge and tasks of a Linux system admin.
 
 [GitBook.](https://abarrak.gitbook.io/linux-sysops-handbook)
 
@@ -12,7 +12,7 @@ A study notes book for the common knoweldge and tasks of a Linux system admin.
 4. [File Permissions](#4-file-permissions)
 5. [Background Services and Crons](#5-crons-and-background-services)
 6. [Linux Distros](#6-linux-distros)
-7. [Logs, Monitroing, and Troubleshooting](#7-logs-monitroing-and-troubleshooting)
+7. [Logs, Monitoring, and Troubleshooting](#7-logs-monitoring-and-troubleshooting)
 8. [Network Essentials](#8-network-essentials)
 9. [System Updates and Patching](#9-system-updates-and-patching)
 11. [Storage](#10-storage)
@@ -83,11 +83,11 @@ To restrict service user accounts (e.g. accounts for web servers), the shell can
 $ usermod -s /sbin/nologin nginx_usr1
 ```
 
-To change a user passowrd, use the command `passwd` interactively. Additionally `change` command sets the password policy in the system.
+To change a user password, use the command `passwd` interactively. Additionally `change` command sets the password policy in the system.
 
 
 Use the command `su - <username>` to switch to the specified user. which will promote for her password. Running the command without username will switch to
-the root user. To avoid cases where password is not availabale, use `sudo` to switch accounts using current user password only and according to rules in `/etc/sudoers` directory. Use `sudo -i` to gain an interactive root shell.
+the root user. To avoid cases where password is not available, use `sudo` to switch accounts using current user password only and according to rules in `/etc/sudoers` directory. Use `sudo -i` to gain an interactive root shell.
 
 
 To run executables as background process (job), append an ampersand to it:
@@ -98,7 +98,7 @@ $ echo "Hi .. looping:" | sleep 10000 | echo "done." &
 
 To view the current jobs, and their details run `job`, `ps j` commands respectively.
 
-To bring back a job in the foreground in the current session, and send it back use the followin:
+To bring back a job in the foreground in the current session, and send it back use the following:
 
 ```shell
 $ fg %<job-no>
@@ -114,7 +114,7 @@ $ kil -9 5921
 $ kill -SIGTERM 6152
 ```
 
-Use `killall` to operate on multiple processes using their executable name. Use `pkill` for filering with more options.
+Use `killall` to operate on multiple processes using their executable name. Use `pkill` for filtering with more options.
 
 ```shell
 $ killall -15 nginx
@@ -125,9 +125,9 @@ $ pkill -U tester
 ## 3. Shell Tips and Tricks 
 
 
-Getting used to [bash language and its fundamentals](https://learnxinyminutes.com/docs/bash/) like conditions, looping, functions, etc. is recommened.
+Getting used to [bash language and its fundamentals](https://learnxinyminutes.com/docs/bash/) like conditions, looping, functions, etc. is recommended.
 
-The popular files and text processing and mainpulation utilites are important to master, such as:
+The popular files and text processing and manipulation utilites are important to master, such as:
 
 - `cat`
 - `cp`
@@ -257,7 +257,7 @@ Finally, to resolve conflicting services making them unavailable, the `mask` and
 
 ## 6. Linux Distros
 
-In 1991, Linux kernal was introduced by Linus Torvalds, and combined with GNU project, which is previosuly created in 1990 as open source OS programs and components. This formed what we call today Linux distribution, a Unix-like operating system.
+In 1991, Linux kernel was introduced by Linus Torvalds, and combined with GNU project, which is previosuly created in 1990 as open source OS programs and components. This formed what we call today Linux distribution, a Unix-like operating system.
 
 Today the Linux operating system is supported on most hardware platforms.  [Linux works on almost every architecture from i386 to SPARC](https://www.linuxtrainingacademy.com/linux-distribution-intro/). Linux can be found on almost every type of device today, from watches, televisions, mobile phones, servers, desktops, and even vending machines.
 
@@ -281,9 +281,9 @@ And here's for RPM based distros:
 
 <img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/timeline.png?raw=true" width="700px" />
 
-## 7. Logs, Monitroing, and Troubleshooting
+## 7. Logs, Monitoring, and Troubleshooting
 
-You can moitor the system's resources usage, uptime, and sessions' load leverages over time as follows:
+You can monitor the system's resources usage, uptime, and sessions' load leverages over time as follows:
 
 ```shell
 $ top
@@ -343,7 +343,7 @@ $ ping -c4 github.com
 $ ping6 2001:db8:3333:4444:5555:6666:7777:8888
 ```
 
-To see the netowrk routing table and interfaces, use the following:
+To see the network routing table and interfaces, use the following:
 
 ```shell
 $ ip routes
@@ -444,11 +444,11 @@ $ cat /etc/yum.repos.d/*
 
 ## 10. Storage
 
-Linux is formed for a unified file-system consists of all file systems provided by the hardware or virtual storage devices attached to the system. Essentially, everything in linux is a file. It can be viewed as a reveresed tree of nested directories starting from the root directory `/`.
+Linux is formed for a unified file-system consists of all file systems provided by the hardware or virtual storage devices attached to the system. Essentially, everything in linux is a file. It can be viewed as a reversed tree of nested directories starting from the root directory `/`.
 
 <img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/linux-file-system.png?raw=true" width="700px" />
 
-Block devices are the mechanism that the kernel detects and identify raw storage devices (HDD, SSD, USBs, ..). [As the name indicates, the kernel interfaces and references them by fixed-size blocks (chunks of spaces)](https://www.digitalocean.com/community/tutorials/an-introduction-to-storage-terminology-and-concepts-in-linux). The block devices are stored in `/dev` directory by the OS, and has letters naming convention such as `/dev/sda`, `/dev/sdb`, `/dev/vda`, and appeneded numbers in case of partitions `/dev/sda3`. The attachment of the block device into the system is done through mounting it to a directory in the system.
+Block devices are the mechanism that the kernel detects and identify raw storage devices (HDD, SSD, USBs, ..). [As the name indicates, the kernel interfaces and references them by fixed-size blocks (chunks of spaces)](https://www.digitalocean.com/community/tutorials/an-introduction-to-storage-terminology-and-concepts-in-linux). The block devices are stored in `/dev` directory by the OS, and has letters naming convention such as `/dev/sda`, `/dev/sdb`, `/dev/vda`, and appended numbers in case of partitions `/dev/sda3`. The attachment of the block device into the system is done through mounting it to a directory in the system.
 
 Two operations are essential for using block storages:
 
@@ -467,7 +467,7 @@ Two operations are essential for using block storages:
   - `ZFS`.
 
 
-Additionall, LVM and RAID are another two concepts where the first operate on the opposiste of partitioning and group multiple disks as one logical volume. The latter (Redundant Array of Independent Disks) is used to architect more advanced storage setup to ensure higher availablity, redundency, RD, etc.
+Additionall, LVM and RAID are another two concepts where the first operate on the opposite of partitioning and group multiple disks as one logical volume. The latter (Redundant Array of Independent Disks) is used to architect more advanced storage setup to ensure higher availablity, redundency, RD, etc.
 
 To see the currently attached file system with mounts and a directory space usage, run `df`/`du` commands:
 
@@ -478,7 +478,7 @@ $ du -H /home/abdullah
 
 The `lsof` command lists all active proccess using the block device.
 
-The permenant mounting process rely on `/etc/fstab` file to determine devices to mount on the boot time.
+The permanent mounting process rely on `/etc/fstab` file to determine devices to mount on the boot time.
 
 Use the commands `lsblk` and `monunt` to check and mount file-sytem devices, respectively.
 
@@ -495,7 +495,7 @@ Both provide shortcuts, navigation, and searching capablities (e.g. `man -K <key
 
 **Books:**
 
-1. [How Linux Worksm What Every Superuser Should Know, Brian Ward, _2nd Edition, No Starch Press_.](https://www.amazon.com/How-Linux-Works-2nd-Superuser/dp/1593275676).
+1. [How Linux Works What Every Superuser Should Know, Brian Ward, _2nd Edition, No Starch Press_.](https://www.amazon.com/How-Linux-Works-2nd-Superuser/dp/1593275676).
 2. [Linux Command Line and Shell Scripting Bible, R. Blum and C. Bresnahan, _3rd Edition, Wiley_.](https://www.amazon.com/Command-Scripting-Christine-Bresnahan-2015-01-20/dp/B01JNWWSZA)
 3. [Linux Bible, Christopher Negus, _9th Edition, Wiley_.](https://www.amazon.com/Linux-Bible-Christopher-Negus/dp/1119578884/)
 
