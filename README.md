@@ -11,7 +11,7 @@ A study notes book for the common knowledge and tasks of a Linux system admin.
 3. [Shell Tips and Tricks](#3-shell-tips-and-tricks)
 4. [File Permissions](#4-file-permissions)
 5. [Background Services and Crons](#5-crons-and-background-services)
-6. [Linux Distros](#6-linxu-distros)
+6. [Linux Distros](#6-linux-distros)
 7. [Logs, Monitoring, and Troubleshooting](#7-logs-monitoring-and-troubleshooting)
 8. [Network Essentials](#8-network-essentials)
 9. [System Updates and Patching](#9-system-updates-and-patching)
