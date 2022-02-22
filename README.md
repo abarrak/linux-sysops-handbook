@@ -257,7 +257,7 @@ Finally, to resolve conflicting services making them unavailable, the `mask` and
 
 ## 6. Linux Distros
 
-In 1991, Linux kernel was introduced by Linus Torvalds, and combined with GNU project, which is previosuly created in 1990 as open source OS programs and components. This formed what we call today Linux distribution, a Unix-like operating system.
+In 1991, Linux kernel was introduced by Linus Torvalds, and combined with GNU project, which is previously created in 1990 as open source OS programs and components. This formed what we call today Linux distribution, a Unix-like operating system.
 
 Today the Linux operating system is supported on most hardware platforms.  [Linux works on almost every architecture from i386 to SPARC](https://www.linuxtrainingacademy.com/linux-distribution-intro/). Linux can be found on almost every type of device today, from watches, televisions, mobile phones, servers, desktops, and even vending machines.
 
