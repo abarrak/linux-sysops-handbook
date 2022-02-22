@@ -30,7 +30,7 @@ The daemon `systemd` process starts during boot time, and remains active until t
 
 Each process contains several main parts, such as: PID, state, virtual space address (memory), threads, network and file descriptors, scheduler information, and links. Processes are controlled and respond to signals. The states that a process can transistion among are depicted below:
 
-<img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/process-states.png?raw=true" width="700px" height="450px" />
+<img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/process-states.png?raw=true" width="700px" />
 
 To observe the states and other information of the processes interatively, use the `top` command.
 
@@ -261,7 +261,7 @@ Today the Linux operating system is supported on most hardware platforms.  [Linu
 
 One of the major distinction between Linux distributions is the package management part and how software is installed and managed. There are multiple package formats, and the most common ones are Debian (deb), RedHat Package Manager (RPM).
 
-<img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/distros.jpg?raw=true" width="700px" height="450px" />
+<img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/distros.jpg?raw=true" width="700px" />
 
 Here's a listing for the common Debian based distros:
 
@@ -277,7 +277,7 @@ And here's for RPM based distros:
 - CentOS.
 - openSUSE.
 
-<img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/timeline.png?raw=true" width="700px" height="450px" />
+<img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/timeline.png?raw=true" width="700px" />
 
 ## 7. Logs, Monitroing, and Troubleshooting
 
@@ -444,7 +444,7 @@ $ cat /etc/yum.repos.d/*
 
 Linux is formed for a unified file-system consists of all file systems provided by the hardware or virtual storage devices attached to the system. Essentially, everything in linux is a file. It can be viewed as a reveresed tree of nested directories starting from the root directory `/`.
 
-<img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/linux-file-system.png?raw=true" width="700px" height="450px" />
+<img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/linux-file-system.png?raw=true" width="700px" />
 
 Block devices are the mechanism that the kernel detects and identify raw storage devices (HDD, SSD, USBs, ..). [As the name indicates, the kernel interfaces and references them by fixed-size blocks (chunks of spaces)](https://www.digitalocean.com/community/tutorials/an-introduction-to-storage-terminology-and-concepts-in-linux). The block devices are stored in `/dev` directory by the OS, and has letters naming convention such as `/dev/sda`, `/dev/sdb`, `/dev/vda`, and appeneded numbers in case of partitions `/dev/sda3`. The attachment of the block device into the system is done through mounting it to a directory in the system.
 
