@@ -2,7 +2,7 @@
 
 A study notes book for the common knoweldge and tasks of a Linux system admin.
 
-[GitBook.](https://abdullah-barrak.gitbook.io/linux-sysops-handbook/)
+[GitBook.](https://abarrak.gitbook.io/linux-sysops-handbook)
 
 ## Table of Content
 
