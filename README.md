@@ -8,12 +8,12 @@ A study notes book for the common knoweldge and tasks of a Linux system admin.
 2. [User Management](#2-user-management)
 3. [Shell Tips and Tricks](#3-shell-tips-and-tricks)
 4. [File Permissions](#4-file-permissions)
-5. [Crons and Background Services](#5-crons-and-background-services)
+5. [Background Services and Crons](#5-crons-and-background-services)
 6. [Linxu Distros](#6-linxu-distros)
 7. [Logs, Monitroing, and Troubleshooting](#7-logs-monitroing-and-troubleshooting)
 8. [Network Essentials](#8-network-essentials)
 9. [System Updates and Patching](#9-system-updates-and-patching)
-11. [Storage.](#10-storage)
+11. [Storage](#10-storage)
 12. [Notes & Additional Resources](#10-additional-resources--final-notes)
 
 ## 1. Processes
@@ -255,6 +255,29 @@ Finally, to resolve conflicting services making them unavailable, the `mask` and
 
 ## 6. Linxu Distros
 
+In 1991, Linux kernal was introduced by Linus Torvalds, and combined with GNU project, which is previosuly created in 1990 as open source OS programs and components. This formed what we call today Linux distribution, a Unix-like operating system.
+
+[Today the Linux operating system is supported on most hardware platforms.  Linux works on almost every architecture from i386 to SPARC. Linux can be found on almost every type of device today, from watches, televisions, mobile phones, servers, desktops, and even vending machines.](https://www.linuxtrainingacademy.com/linux-distribution-intro/)
+
+One of the major distinction between Linux distributions is the package management part and how software is installed and managed. There are multiple package formats, and the most common ones are Debian (deb), RedHat Package Manager (RPM).
+
+<img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/distros.png?raw=true" width="700px" height="450px" />
+
+Here's a listing for the common Debian based distros:
+
+- Debian.
+- Ubuntu.
+- Linux Mint.
+- Kali Linux.
+
+And here's for RPM based distros:
+
+- Fedora.
+- RedHat Enterprise Linux (RHEL).
+- CentOS.
+- openSUSE.
+
+<img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/timeline.png?raw=true" width="700px" height="450px" />
 
 ## 7. Logs, Monitroing, and Troubleshooting
 
