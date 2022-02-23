@@ -2,7 +2,11 @@
 
 A study notes book for the common knoweldge and tasks of a Linux system admin.
 
-[GitBook.](https://abdullah-barrak.gitbook.io/linux-sysops-handbook/)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+<a href="https://abdullah-barrak.gitbook.io/linux-sysops-handbook" alt="Gitbook link"><img src="https://img.shields.io/badge/gitbook-link-success" /></a>
+<a href="https://github.com/abarrak/linux-sysops-handbook" alt="Github link"><img src="https://img.shields.io/badge/github-link-important" /></a>
+![GitHub contributors](https://img.shields.io/github/contributors/abarrak/linux-sysops-handbook)
+
 
 ## Table of Content
 
