@@ -6,19 +6,19 @@ A study notes book for the common knowledge and tasks of a Linux system admin.
 
 ## Table of Content
 
-1. [Processes](#1-processes)
-2. [User Management](#2-user-management)
-3. [Shell Tips and Tricks](#3-shell-tips-and-tricks)
-4. [File Permissions](#4-file-permissions)
-5. [Background Services and Crons](#5-crons-and-background-services)
-6. [Linux Distros](#6-linux-distros)
-7. [Logs, Monitoring, and Troubleshooting](#7-logs-monitoring-and-troubleshooting)
-8. [Network Essentials](#8-network-essentials)
-9. [System Updates and Patching](#9-system-updates-and-patching)
-11. [Storage](#10-storage)
-12. [Notes & Additional Resources](#10-additional-resources--final-notes)
+1. [Processes](#1---processes)
+2. [User Management](#2---user-management)
+3. [Shell Tips and Tricks](#3---shell-tips-and-tricks)
+4. [File Permissions](#4---file-permissions)
+5. [Background Services and Crons](#5---crons-and-background-services)
+6. [Linux Distros](#6---linux-distros)
+7. [Logs, Monitoring, and Troubleshooting](#7---logs-monitoring-and-troubleshooting)
+8. [Network Essentials](#8---network-essentials)
+9. [System Updates and Patching](#9---system-updates-and-patching)
+10. [Storage](#10---storage)
+11. [Notes & Additional Resources](#11---notes--additional-resources)
 
-## 1. Processes
+## 1 - Processes
 
 List the current active process with their statuses, numbers, resource usage, etc. using the command `ps`.
 
@@ -37,7 +37,7 @@ Each process contains several main parts, such as: PID, state, virtual space add
 To observe the states and other information of the processes interatively, use the `top` command.
 
 
-## 2. User Management
+## 2 - User Management
 
 The users and groups are managed in `/etc/passwd` and `/etc/group` files.
 
@@ -122,7 +122,7 @@ $ pkill -U tester
 ```
 
 
-## 3. Shell Tips and Tricks 
+## 3 - Shell Tips and Tricks 
 
 
 Getting used to [bash language and its fundamentals](https://learnxinyminutes.com/docs/bash/) like conditions, looping, functions, etc. is recommended.
@@ -162,7 +162,7 @@ The following list of commands are used to generate and manage ssh keys between 
 
 
 
-## 4. File Permissions
+## 4 - File Permissions
 
 A file permissions are considered in three dimensions: the owner user, the owner's group, and rest of other users. 
 
@@ -214,7 +214,7 @@ Finally, use `pstree` and `pgrep` to view process parent/child tree and search f
 $ psgrep -u abdullah -l
 ```
 
-## 5. Background Services and Crons
+## 5 - Background Services and Crons
 
 `systemctl` is the command used to list, manage, and check background processes or so called `daemons`.
 
@@ -255,7 +255,7 @@ $ systemctl list-dependencies nginx.service
 Finally, to resolve conflicting services making them unavailable, the `mask` and `unmask` commands can be used to point a deamons config to `dev/null` then back to normal respectively.
 
 
-## 6. Linux Distros
+## 6 - Linux Distros
 
 In 1991, Linux kernel was introduced by Linus Torvalds, and combined with GNU project, which is previosuly created in 1990 as open source OS programs and components. This formed what we call today Linux distribution, a Unix-like operating system.
 
@@ -281,7 +281,7 @@ And here's for RPM based distros:
 
 <img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/timeline.png?raw=true" width="700px" />
 
-## 7. Logs, Monitoring, and Troubleshooting
+## 7 - Logs, Monitoring, and Troubleshooting
 
 You can monitor the system's resources usage, uptime, and sessions' load leverages over time as follows:
 
@@ -319,7 +319,7 @@ $ journalctl _PID=6610
 ```
 
 
-## 8. Network Essentials
+## 8 - Network Essentials
 
 For effective work on the system network configurations and troubleshooting, it is essential to review network/internet protocols (TCP/UDP) and IPv4/IPv6 concepts [(Ref.1)](https://www.ibm.com/cloud/learn/networking-a-complete-guide), [(Ref.2)](https://www.cloudflare.com/learning/network-layer/what-is-a-protocol/).
 
@@ -377,7 +377,7 @@ $ nmcli con show
 ```
 
 
-## 9. System Updates and Patching
+## 9 - System Updates and Patching
 
 Managing the system packages varies depending on linux distributions, but the essential parts are the same (installation, repositories, package managers, etc.). For Debian based distribtuions, `apt` is the package manager, whereas for Fedora / RHEL, `yum` is used.
 
@@ -442,7 +442,7 @@ $ cat /etc/apt/sources.list /etc/apt/sources.list.d/*
 $ cat /etc/yum.repos.d/*
 ```
 
-## 10. Storage
+## 10 - Storage
 
 Linux is formed for a unified file-system consists of all file systems provided by the hardware or virtual storage devices attached to the system. Essentially, everything in linux is a file. It can be viewed as a reversed tree of nested directories starting from the root directory `/`.
 
@@ -483,7 +483,7 @@ The permanent mounting process rely on `/etc/fstab` file to determine devices to
 Use the commands `lsblk` and `monunt` to check and mount file-sytem devices, respectively.
 
 
-## 11. Notes & Additional Resources
+## 11 - Notes & Additional Resources
 
 Use the `man` command to lookup the manual information on commands or topics in the system.
 
