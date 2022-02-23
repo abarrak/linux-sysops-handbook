@@ -13,7 +13,7 @@ A study notes book for the common knowledge and tasks of a Linux system admin.
 2. [User Management](#2---user-management)
 3. [Shell Tips and Tricks](#3---shell-tips-and-tricks)
 4. [File Permissions](#4---file-permissions)
-5. [Background Services and Crons](#5---crons-and-background-services)
+5. [Background Services and Crons](#5---background-services-and-crons)
 6. [Linux Distros](#6---linux-distros)
 7. [Logs, Monitoring, and Troubleshooting](#7---logs-monitoring-and-troubleshooting)
 8. [Network Essentials](#8---network-essentials)
@@ -260,7 +260,7 @@ Finally, to resolve conflicting services making them unavailable, the `mask` and
 
 ## 6 - Linux Distros
 
-In 1991, Linux kernel was introduced by Linus Torvalds, and combined with GNU project, which is previously created in 1990 as open source OS programs and components. This formed what we call today Linux distribution, a Unix-like operating system.
+In 1991, Linux kernel was introduced by Linus Torvalds, and combined with GNU project, which was previously created in 1990 as open source OS programs and components. This formed what we call today Linux distribution, a Unix-like operating system.
 
 Today the Linux operating system is supported on most hardware platforms.  [Linux works on almost every architecture from i386 to SPARC](https://www.linuxtrainingacademy.com/linux-distribution-intro/). Linux can be found on almost every type of device today, from watches, televisions, mobile phones, servers, desktops, and even vending machines.
 
@@ -351,6 +351,7 @@ To see the network routing table and interfaces, use the following:
 ```shell
 $ ip routes
 $ ip -6 route
+$ ip help
 $ ip show link
 ```
 
@@ -398,10 +399,11 @@ $ apt install <NAME>
 $ yum install <NAME>
 ```
 
+
 Update a package or all packages:
 
 ```shell
-$ apt update <NAME>
+$ apt upgrade <NAME>
 $ yum update <NAME>
 ```
 
@@ -422,7 +424,7 @@ $ yum info <NAME>
 List all current packages on the system:
 
 ```shell
-$ apt list
+$ apt list --installed
 $ yum list
 ```
 
