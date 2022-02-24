@@ -457,7 +457,7 @@ Block devices are the mechanism that the kernel detects and identify raw storage
 
 Two operations are essential for using block storages:
 
-**1. Partiition:**
+**1. Partition:**
 
   Breaking the disk into reusable smaller units, each treated as own disk. 
   The main partitioning methods are MBR (Master Boot Record) and GPT (GUID Partition Table).
