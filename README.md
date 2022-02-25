@@ -277,7 +277,7 @@ An example of a cron entry that runs backup command, every day at 5:00 AM:
 
 ## 6 - Linux Distros
 
-In 1991, Linux kernel was introduced by Linus Torvalds, and combined with GNU project, which was previously created in 1990 as open source OS programs and components. This formed what we call today Linux distribution, a Unix-like operating system.
+In 1991, Linux kernel was introduced by Linus Torvalds, and combined with GNU project, which was previously created in 1983-1984 as open source OS programs and components. This formed what we call today Linux distribution, a Unix-like operating system.
 
 Today the Linux operating system is supported on most hardware platforms.  [Linux works on almost every architecture from i386 to SPARC](https://www.linuxtrainingacademy.com/linux-distribution-intro/). Linux can be found on almost every type of device today, from watches, televisions, mobile phones, servers, desktops, and even vending machines.
 
@@ -474,7 +474,7 @@ Block devices are the mechanism that the kernel detects and identify raw storage
 
 Two operations are essential for using block storages:
 
-**1. Partiition:**
+**1. Partition:**
 
   Breaking the disk into reusable smaller units, each treated as own disk. 
   The main partitioning methods are MBR (Master Boot Record) and GPT (GUID Partition Table).
