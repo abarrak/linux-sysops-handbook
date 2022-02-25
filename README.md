@@ -258,11 +258,12 @@ $ systemctl list-dependencies nginx.service
 Finally, to resolve conflicting services making them unavailable, the `mask` and `unmask` commands can be used to point a deamons config to `dev/null` then back to normal respectively.
 
 
-The cron daemon `crond` is responsible for managing the user's and system's scheduled jobs. Use the command `crontab` to manage jobs and their files:
+The cron daemon `crond` is responsible for managing the user's and system's scheduled jobs. Use the command `crontab` to manage jobs and their files in the user account or in the system wide `/etc/crontab`, `/etc/cron.d/` locations.
 
 ```shell
 $ sudo crontab -l
 $ sudo crontab -e
+$ vim /etc/cron.d/my-backup
 ```
 
 The syntax of crontab entries  is captured by the diagram below. Use the [following tool to quick assistance.](https://crontab.guru/)
