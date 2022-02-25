@@ -154,6 +154,29 @@ Use the command `date` to print the current date and time or others in the past 
 $ date +%x
 ```
 
+The standard terminal channels in Linux are 3: `stdin`, `stdout`, and `stderr` where the first is for input stream and the latters for output and error streams. 
+
+By default the successful command results are outputted to `stdout` (equivalent to `>`). You can explicity redirect to `stdout` or `stderr` as follows:
+
+```shell
+$ echo "hi there!" 1> error_log.txt
+$ cat ~/incorrect-path 2> error_log.txt
+# To both:
+$ (echo "hi" && cat ~/wrong) >> log.txt 2>&1
+```
+
+To discard output stream, redirect it to the special directory `/dev/null`.
+
+The standard input can be captured via redirection or file pipes:
+
+```shell
+$ cat <<EOF
+This is coming from the stdin
+EOF
+
+$ cat LICENSE | wc -l
+```
+
 The `ssh` command used to connect to servers in secure manner using OpenSSH library using public key cryptography. The configuration and known hosts are kept under `/etc/ssh` system-wide or in `~/.ssh/` in current user's home directory. On the other hand `scp` is used for secure copy on secure shell fashion.
 
 The following list of commands are used to generate and manage ssh keys between client and server:
@@ -162,7 +185,6 @@ The following list of commands are used to generate and manage ssh keys between 
 2. `ssh-agent`.
 3. `ssh-copy-id`.
 4. `ssh-add`.
-
 
 
 ## File Permissions
