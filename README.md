@@ -26,7 +26,7 @@ A study notes book for the common knowledge and tasks of a Linux system admin.
 List the current active process with their statuses, numbers, resource usage, etc. using the command `ps`.
 
 ```shell
-$ ps -auxc
+$ ps auxc
 ```
 
 Quoting man's page documentaiton on `ps`: "A different set of processes can be selected for display by using any combination of the `-a, -G, -g, -p, -T, -t, -U, and -u` options.  If more than one of these options are given, then ps will select all processes which are matched by at least one of the given options".
@@ -39,6 +39,36 @@ Each process contains several main parts, such as: PID, state, virtual space add
 
 To observe the states and other information of the processes interatively, use the `top` command.
 
+To run executables as background process (job), append an ampersand to it:
+
+```shell
+$ echo "Hi .. looping:" | sleep 10000 | echo "done." &
+```
+
+To view the current jobs, and their details run `job`, `ps j` commands respectively.
+
+To bring back a job in the foreground in the current session, and send it back use the following:
+
+```shell
+$ fg %<job-no>
+$ ctrl+z
+$ bg %<job-no>
+```
+
+Use the command `kill -l` to see the available signals to send to processes, like interrupt, terminate, resume, etc.
+
+```shell
+$ kill -l
+$ kil -9 5921
+$ kill -SIGTERM 6152
+```
+
+Use `killall` to operate on multiple processes using their executable name. Use `pkill` for filtering with more options.
+
+```shell
+$ killall -15 nginx
+$ pkill -U tester
+```
 
 ## User Management
 
@@ -91,38 +121,6 @@ To change a user password, use the command `passwd` interactively. Additionally 
 
 Use the command `su - <username>` to switch to the specified user. which will promote for her password. Running the command without username will switch to
 the root user. To avoid cases where password is not available, use `sudo` to switch accounts using current user password only and according to rules in `/etc/sudoers` directory. Use `sudo -i` to gain an interactive root shell.
-
-
-To run executables as background process (job), append an ampersand to it:
-
-```shell
-$ echo "Hi .. looping:" | sleep 10000 | echo "done." &
-```
-
-To view the current jobs, and their details run `job`, `ps j` commands respectively.
-
-To bring back a job in the foreground in the current session, and send it back use the following:
-
-```shell
-$ fg %<job-no>
-$ ctrl+z
-$ bg %<job-no>
-```
-
-Use the command `kill -l` to see the available signals to send to processes, like interrupt, terminate, resume, etc.
-
-```shell
-$ kill -l
-$ kil -9 5921
-$ kill -SIGTERM 6152
-```
-
-Use `killall` to operate on multiple processes using their executable name. Use `pkill` for filtering with more options.
-
-```shell
-$ killall -15 nginx
-$ pkill -U tester
-```
 
 
 ## Shell Tips and Tricks 
