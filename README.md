@@ -258,6 +258,23 @@ $ systemctl list-dependencies nginx.service
 Finally, to resolve conflicting services making them unavailable, the `mask` and `unmask` commands can be used to point a deamons config to `dev/null` then back to normal respectively.
 
 
+The cron daemon `crond` is responsible for managing the user's and system's scheduled jobs. Use the command `crontab` to manage jobs and their files:
+
+```shell
+$ sudo crontab -l
+$ sudo crontab -e
+```
+
+The syntax of crontab entries  is captured by the diagram below. Use the [following tool to quick assistance.](https://crontab.guru/)
+
+<img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/crontabs.jpg?raw=true" />
+
+An example of a cron entry that runs backup command, every day at 5:00 AM:
+
+```shell
+0 5 * * * /usr/bin/daily-backup
+```
+
 ## 6 - Linux Distros
 
 In 1991, Linux kernel was introduced by Linus Torvalds, and combined with GNU project, which was previously created in 1990 as open source OS programs and components. This formed what we call today Linux distribution, a Unix-like operating system.
