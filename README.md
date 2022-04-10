@@ -29,15 +29,15 @@ List the current active process with their statuses, numbers, resource usage, et
 $ ps auxc
 ```
 
-Quoting man's page documentaiton on `ps`: "A different set of processes can be selected for display by using any combination of the `-a, -G, -g, -p, -T, -t, -U, and -u` options.  If more than one of these options are given, then ps will select all processes which are matched by at least one of the given options".
+Quoting man's page documentation on `ps`: "A different set of processes can be selected for display by using any combination of the `-a, -G, -g, -p, -T, -t, -U, and -u` options.  If more than one of these options are given, then ps will select all processes which are matched by at least one of the given options".
 
 The daemon `systemd` process starts during boot time, and remains active until the shutdown. It's the parent process for all other process in the system.
 
-Each process contains several main parts, such as: PID, state, virtual space address (memory), threads, network and file descriptors, scheduler information, and links. Processes are controlled and respond to signals. The states that a process can transistion among are depicted below:
+Each process contains several main parts, such as: PID, state, virtual space address (memory), threads, network and file descriptors, scheduler information, and links. Processes are controlled and respond to signals. The states that a process can transition among are depicted below:
 
 <img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/process-states.png?raw=true" width="700px" />
 
-To observe the states and other information of the processes interatively, use the `top` command.
+To observe the states and other information of the processes interactively, use the `top` command.
 
 To run executables as background process (job), append an ampersand to it:
 
@@ -68,6 +68,12 @@ Use `killall` to operate on multiple processes using their executable name. Use 
 ```shell
 $ killall -15 nginx
 $ pkill -U tester
+```
+
+Finally, use `pstree` and `pgrep` to view process parent/child tree and search for processes by pattern.
+
+```shell
+$ psgrep -u abdullah -l
 ```
 
 ## User Management
@@ -128,7 +134,7 @@ the root user. To avoid cases where password is not available, use `sudo` to swi
 
 Getting used to [bash language and its fundamentals](https://learnxinyminutes.com/docs/bash/) like conditions, looping, functions, etc. is recommended.
 
-The popular files and text processing and manipulation utilites are important to master, such as:
+The popular files and text processing and manipulation utilities are important to master, such as:
 
 - `cat`
 - `cp`
@@ -179,10 +185,10 @@ The `ssh` command used to connect to servers in secure manner using OpenSSH libr
 
 The following list of commands are used to generate and manage ssh keys between client and server:
 
-1. `ssh-keygen`.
-2. `ssh-agent`.
-3. `ssh-copy-id`.
-4. `ssh-add`.
+1. `ssh-keygen`: to generate new key pairs.
+2. `ssh-copy-id`: to copy the public key to the remote machines.
+3. `ssh-agent`: to simplify working with the private key passphrase if used.
+4. `ssh-add`: to cache the passphrase in the current session.
 
 
 ## File Permissions
@@ -229,12 +235,6 @@ Lastly, a fourth dimension at the start can be added to represent the special pe
 ```shell
 $ chmod a+t protected-folder/
 $ chmod -R 1444 read-only-protected/
-```
-
-Finally, use `pstree` and `pgrep` to view process parent/child tree and search for processes by pattern.
-
-```shell
-$ psgrep -u abdullah -l
 ```
 
 ## Background Services and Crons
@@ -286,7 +286,7 @@ $ sudo crontab -e
 $ vim /etc/cron.d/my-backup
 ```
 
-The syntax of crontab entries  is captured by the diagram below. Use the [following tool to quick assistance.](https://crontab.guru/)
+The syntax of crontab entries is captured by the diagram below. Use the [following tool to quick assistance.](https://crontab.guru/)
 
 <img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/crontabs.jpg?raw=true" />
 
@@ -306,14 +306,14 @@ One of the major distinction between Linux distributions is the package manageme
 
 <img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/distros.jpg?raw=true" width="700px" />
 
-Here's a listing for the common Debian based distros:
+Here's a listing for the common Debian based distributions:
 
 - Debian.
 - Ubuntu.
 - Linux Mint.
 - Kali Linux.
 
-And here's for RPM based distros:
+And here's for RPM based distributions:
 
 - Fedora.
 - RedHat Enterprise Linux (RHEL).
@@ -334,7 +334,7 @@ $ w
 
 Use `lscpu` to see the system's CPU in use and other details.
 
-The logs of the system events and processes traces are usually kept in `/var/log` directory. There are two categories of persistent logs (`rsyslogs`) and temporary logs (`journald`) that are wiped across boots. Logs include syslog protocol messages, events, security incidents, mailing logs, jobs logs, and other program logs.
+The system events and processes traces are usually kept in as logs in `/var/log` directory. There are two categories of logs: 1. essential system logs via `journald`, that are wiped across boots by default (can be configured to persist). 2. `rsyslog` logs that persist by default and organized inside `/var/log/` folder. Mainly, the logging mechanism in Linux follows the standard `syslog` protocol for the system's messages, events, security incidents, mailing, and jobs logs, while other programs may or may not follow `syslog` format identically.
 
 
 As explored in section (3), use `cat`, `head`, `tail` commands to interactively see or follow the logs.
@@ -344,14 +344,14 @@ $ head -n 50 /var/logs/mail.log
 $ tail -f /var/logs/mysql.log
 ```
 
-You can configure the syslog service and manage it as any daemon:
+You can configure `rsyslog` service and manage it as any daemon:
 
 ```shell
 $ vim /etc/rsyslog.conf
 $ systemctl reload rsyslog
 ```
 
-On the other hand, use `journalctl` to view and follow the system's `journald` log entries, which resides in `run/log/journal`.
+On the other hand, use `journalctl` to view and follow the system's `journald` log entries, which resides in `/run/log/journal`.
 
 ```shell
 $ journalctl -n 50 -p err 
@@ -387,7 +387,7 @@ $ ping6 2001:db8:3333:4444:5555:6666:7777:8888
 To see the network routing table and interfaces, use the following:
 
 ```shell
-$ ip routes
+$ ip route
 $ ip -6 route
 $ ip help
 $ ip show link
@@ -409,7 +409,7 @@ $ nmap --open 192.168.2.18
 $ nmap --packet-trace 192.168.1.1
 ```
 
-`NetworkManager` is the kernel feature [to manage netowrk configurations in Linux](https://en.wikipedia.org/wiki/NetworkManager). `nmcli` is the terminal utility.
+`NetworkManager` is the kernel feature [to manage network configurations in Linux](https://en.wikipedia.org/wiki/NetworkManager). `nmcli` is the terminal utility.
 
 ```shell
 $ nmcli device wifi list
@@ -421,7 +421,7 @@ $ nmcli con show
 
 ## System Updates and Patching
 
-Managing the system packages varies depending on linux distributions, but the essential parts are the same (installation, repositories, package managers, etc.). For Debian based distribtuions, `apt` is the package manager, whereas for Fedora / RHEL, `yum` is used.
+Managing the system packages varies depending on Linux distributions, but the essential parts are the same (installation, repositories, package managers, etc.). For Debian based distributions, `apt` is the package manager, whereas for Fedora / RHEL, `yum` is used.
 
 Search for some package:
 
@@ -466,14 +466,14 @@ $ apt list --installed
 $ yum list
 ```
 
-Audit the history of pacakge management actions:
+Audit the history of package management actions:
 
 ```shell
 $ cat less /var/log/apt/history.log | less
 $ cat less /var/log/dnf.rpm.log | less
 ```
 
-And finally, the package source repos can be set up and updated through the following:
+And finally, the package source repositories can be set up and updated through the following:
 
 ```shell
 # list current enabled repos
@@ -487,22 +487,22 @@ $ cat /etc/yum.repos.d/*
 
 ## Storage
 
-Linux is formed for a unified file-system consists of all file systems provided by the hardware or virtual storage devices attached to the system. Essentially, everything in linux is a file. It can be viewed as a reversed tree of nested directories starting from the root directory `/`.
+Linux is formed for a unified file-system consists of all file systems provided by the hardware or virtual storage devices attached to the system. Essentially, everything in Linux is a file. It can be viewed as a reversed tree of nested directories starting from the root directory `/`.
 
 <img src="https://github.com/abarrak/linux-sysops-handbook/blob/main/images/linux-file-system.png?raw=true" width="700px" />
 
 Block devices are the mechanism that the kernel detects and identify raw storage devices (HDD, SSD, USBs, ..). [As the name indicates, the kernel interfaces and references them by fixed-size blocks (chunks of spaces)](https://www.digitalocean.com/community/tutorials/an-introduction-to-storage-terminology-and-concepts-in-linux). The block devices are stored in `/dev` directory by the OS, and has letters naming convention such as `/dev/sda`, `/dev/sdb`, `/dev/vda`, and appended numbers in case of partitions `/dev/sda3`. The attachment of the block device into the system is done through mounting it to a directory in the system.
 
-Two operations are essential for using block storages:
+Two operations are essential for using block storage:
 
-**1. Partition:**
+**1. Partitioning:**
 
   Breaking the disk into reusable smaller units, each treated as own disk. 
   The main partitioning methods are MBR (Master Boot Record) and GPT (GUID Partition Table).
 
 **2. Formatting:**
 
-  Prepeating the device as a file-system to be read and write to. Many file-system formats exists like:
+  Preparing the device as a file-system to be read and write to. Many file-system formats exists like:
 
   - `Ext4`.
   - `XFS`.
@@ -510,7 +510,7 @@ Two operations are essential for using block storages:
   - `ZFS`.
 
 
-Additionall, LVM and RAID are another two concepts where the first operate on the opposite of partitioning and group multiple disks as one logical volume. The latter (Redundant Array of Independent Disks) is used to architect more advanced storage setup to ensure higher availablity, redundency, RD, etc.
+Additionally, LVM and RAID are another two concepts where the first operate on the opposite of partitioning and group multiple disks as one logical volume. The latter (Redundant Array of Independent Disks) is used to architect more advanced storage setup to ensure high availability, redundancy, DR, etc.
 
 To see the currently attached file system with mounts and a directory space usage, run `df`/`du` commands:
 
@@ -519,11 +519,11 @@ $ df -H
 $ du -H /home/abdullah
 ```
 
-The `lsof` command lists all active proccess using the block device.
+The `lsof` command lists all active processes using the block device.
 
 The permanent mounting process rely on `/etc/fstab` file to determine devices to mount on the boot time.
 
-Use the commands `lsblk` and `monunt` to check and mount file-sytem devices, respectively.
+Use the commands `lsblk` and `monunt` to check and mount filesystem devices, respectively.
 
 
 ## Notes and Additional Resources
@@ -532,9 +532,9 @@ Use the `man` command to lookup the manual information on commands or topics in 
 
 Additionally, the `info` command is the GNU documentation tool and provide more detailed materials.
 
-Both provide shortcuts, navigation, and searching capablities (e.g. `man -K <keyword` to search across manual).
+Both provide shortcuts, navigation, and searching capabilities (e.g. `man -K <keyword` to search across manual).
 
-### Recommened Reading List
+### Recommended Reading List
 
 **Books:**
 
@@ -544,7 +544,7 @@ Both provide shortcuts, navigation, and searching capablities (e.g. `man -K <key
 
 **Websites & Blogs:**
 
-1. [Digital Occean Knowledge Hub.](https://www.digitalocean.com/community/tags/linux-basics?language=en)
+1. [Digital Ocean Knowledge Hub.](https://www.digitalocean.com/community/tags/linux-basics?language=en)
 2. [9 to 5 Linux Blog.](https://9to5linux.com/)
 3. [nixCraft.](https://www.cyberciti.biz/)
 
