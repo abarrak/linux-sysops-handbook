@@ -59,7 +59,7 @@ Use the command `kill -l` to see the available signals to send to processes, lik
 
 ```shell
 $ kill -l
-$ kil -9 5921
+$ kill -9 5921
 $ kill -SIGTERM 6152
 ```
 
