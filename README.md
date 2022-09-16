@@ -1,6 +1,6 @@
 # Linux SysOps Handbook
 
-A study notes book for the common knowledge and tasks of a Linux system admin.
+An essentials notebook for the common knowledge and tasks of a Linux system admin.
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 <a href="https://abdullah-barrak.gitbook.io/linux-sysops-handbook" alt="Gitbook link"><img src="https://img.shields.io/badge/gitbook-link-success" /></a>
@@ -471,6 +471,7 @@ Audit the history of package management actions:
 ```shell
 $ cat less /var/log/apt/history.log | less
 $ cat less /var/log/dnf.rpm.log | less
+$ yum history
 ```
 
 And finally, the package source repositories can be set up and updated through the following:
@@ -499,6 +500,7 @@ Two operations are essential for using block storage:
 
   Breaking the disk into reusable smaller units, each treated as own disk. 
   The main partitioning methods are MBR (Master Boot Record) and GPT (GUID Partition Table).
+  Use `parted` or equivalent commands to prepare partitions of block devices.
 
 **2. Formatting:**
 
@@ -510,20 +512,22 @@ Two operations are essential for using block storage:
   - `ZFS`.
 
 
-Additionally, LVM and RAID are another two concepts where the first operate on the opposite of partitioning and group multiple disks as one logical volume. The latter (Redundant Array of Independent Disks) is used to architect more advanced storage setup to ensure high availability, redundancy, DR, etc.
+Additionally, LVM concepts focus on building more extensible storage layout by grouping physical volumes (PV) into logical groups (VG), then creating logical volumes from, with possibility of extending or reduction later on.
 
-To see the currently attached file system with mounts and a directory space usage, run `df`/`du` commands:
+To see the block devices and currently attached file system with mounts, and disk usage:
 
 ```shell
-$ df -H
-$ du -H /home/abdullah
+$ blkid
+$ mount
+$ df -h
+$ du -h /opt/data
 ```
 
 The `lsof` command lists all active processes using the block device.
 
 The permanent mounting process rely on `/etc/fstab` file to determine devices to mount on the boot time.
 
-Use the commands `lsblk` and `monunt` to check and mount filesystem devices, respectively.
+Use the commands `lsblk`, `mount`, and `unmount` to check and mount filesystem devices, respectively.
 
 
 ## Notes and Additional Resources
@@ -532,7 +536,7 @@ Use the `man` command to lookup the manual information on commands or topics in 
 
 Additionally, the `info` command is the GNU documentation tool and provide more detailed materials.
 
-Both provide shortcuts, navigation, and searching capabilities (e.g. `man -K <keyword` to search across manual).
+Both provide shortcuts, navigation, and searching capabilities (e.g. `man -K <keyword>` to search across manual).
 
 ### Recommended Reading List
 
